@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GalleryApp</string>
+    <string name="loading_image">Loading image</string>
+    <string name="image_loaded">This is a random image</string>
+    <string name="image_load_failed">Image load failed : $1%s</string>
+    <string name="refresh">refresh</string>
+</resources>
