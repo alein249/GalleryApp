@@ -36,6 +36,8 @@ public class ItemHelper {
             , squareImageURL = "https://picsum.photos/%d";
     private Bitmap bitmap;
     private Set<Integer> colors;
+    private String redURL;
+    private RedirectUrlHelper.OnFetchedUrlListener onFetchedUrlListener;
 
     //Triggers
 
@@ -51,7 +53,7 @@ public class ItemHelper {
     void fetchData(int x, int y, Context context, OnCompleteListener listener){
         this.context = context;
         this.listener = listener;
-        fetchImage(
+        fetchUrl(
                 String.format(rectangularImageURL, x, y)
         );
     }
@@ -68,12 +70,22 @@ public class ItemHelper {
     void fetchData(int x, Context context, OnCompleteListener listener){
         this.context = context;
         this.listener = listener;
-        fetchImage(
+        fetchUrl(
                 String.format(squareImageURL, x)
         );
     }
 
-    //ImageFetcher
+    void fetchUrl(String url) {
+
+        new RedirectUrlHelper().fetchRedirectedURL(new RedirectUrlHelper.OnFetchedUrlListener() {
+            @Override
+            public void onFetchedUrl(String url) {
+                redURL = url;
+                fetchImage(redURL);
+            }
+        }).execute(url);
+
+    }
 
     /**
      * Fetches image from URL
@@ -84,8 +96,6 @@ public class ItemHelper {
         Glide.with(context)
                 .asBitmap()
                 .load(url)
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
                 .into(new CustomTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
@@ -163,7 +173,7 @@ public class ItemHelper {
                         for(ImageLabel label : labels){
                             strings.add(label.getText());
                         }
-                        listener.onFetched(bitmap, colors, strings);
+                        listener.onFetched(redURL, colors, strings);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -181,7 +191,7 @@ public class ItemHelper {
      */
 
     interface OnCompleteListener{
-        void onFetched(Bitmap image, Set<Integer>colors, List<String> labels);
+        void onFetched(String url, Set<Integer> colors, List<String> labels);
         void onError(String error);
     }
 }

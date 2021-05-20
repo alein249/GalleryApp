@@ -4,4 +4,5 @@
     <string name="image_loaded">This is a random image</string>
     <string name="image_load_failed">Image load failed : $1%s</string>
     <string name="refresh">refresh</string>
+    <string name="no_items_try_adding_from_the_action_above">No items. Try adding from the action above</string>
 </resources>

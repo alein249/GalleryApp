@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:padding="8dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GalleryActivity">
@@ -11,9 +10,16 @@
         android:animateLayoutChanges="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp"
-        tools:context=".GalleryActivity">
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/noItemTV"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="320dp"
+            android:gravity="center"
+            android:text="@string/no_items_try_adding_from_the_action_above" />
 
     </LinearLayout>
 

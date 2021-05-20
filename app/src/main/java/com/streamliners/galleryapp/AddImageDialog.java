@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.streamliners.galleryapp.databinding.ChipColorBinding;
@@ -33,6 +34,7 @@ public class AddImageDialog implements ItemHelper.OnCompleteListener {
     private boolean isCustomLabel;
     private Bitmap image;
     private AlertDialog dialog;
+    private String imageUrl;
 
     /**
      * Inflate Dialogs Layout
@@ -173,18 +175,21 @@ public class AddImageDialog implements ItemHelper.OnCompleteListener {
 
     /**
      * Show Data on Main Root to Add Image to Gallery
-     * @param image
+     * @param url
      * @param colors
      * @param labels
      */
 
-    private void showData(Bitmap image, Set<Integer> colors, List<String> labels) {
-        this.image = image;
-        b.imageView.setImageBitmap(image);
+    private void showData(String url, Set<Integer> colors, List<String> labels) {
+        this.imageUrl = url;
         inflateColorChips(colors);
         inflateLabelChips(labels);
         handleCustomLabelInput();
         handleAddImageEvent();
+        Glide.with(context)
+                .asBitmap()
+                .load(url)
+                .into(b.imageView);
 
         b.progressIndicatorRoot.setVisibility(View.GONE);
         b.mainRoot.setVisibility(View.VISIBLE);
@@ -270,7 +275,7 @@ public class AddImageDialog implements ItemHelper.OnCompleteListener {
                         .getChipBackgroundColor().getDefaultColor();
 
                 //Send callback
-                listener.onImageAdded(new Item(image, color, label));
+                listener.onImageAdded(new Item(imageUrl, color, label));
                 dialog.dismiss();
             }
         });
@@ -279,8 +284,8 @@ public class AddImageDialog implements ItemHelper.OnCompleteListener {
     //ItemHelper callbacks
 
     @Override
-    public void onFetched(Bitmap image, Set<Integer> colors, List<String> labels) {
-        showData(image, colors, labels);
+    public void onFetched(String url, Set<Integer> colors, List<String> labels) {
+        showData(url, colors, labels);
     }
 
     @Override
