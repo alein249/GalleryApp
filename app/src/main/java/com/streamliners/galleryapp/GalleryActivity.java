@@ -1,8 +1,12 @@
 package com.streamliners.galleryapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +27,7 @@ import java.util.List;
 public class GalleryActivity extends AppCompatActivity {
 
     ActivityGalleryBinding b;
+    private static final int RESULT_LOAD_IMAGE = 0;
     SharedPreferences preferences;
     List<Item> items = new ArrayList<>();
     private boolean isDialogBoxShowed = false;
@@ -70,6 +75,9 @@ public class GalleryActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.add_image){
             showAddImageDialog();
             return true;
+        }
+        if (item.getItemId() == R.id.addFromGallery){
+            addFromGallery();
         }
         return false;
     }
@@ -189,6 +197,54 @@ public class GalleryActivity extends AppCompatActivity {
 
             items.add(item);
             inflateViewForItem(item);
+        }
+    }
+
+    /**
+     * Send Intent to get image from gallery
+     */
+    private void addFromGallery() {
+        Intent i = new Intent(
+                Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, RESULT_LOAD_IMAGE);
+    }
+    /**
+     * Fetch image from gallery
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            String uri = selectedImage.toString();
+
+            new AddFromGalleryDialog().show(this, uri, new AddFromGalleryDialog.onCompleteListener() {
+                @Override
+                public void onAddCompleted(Item item) {
+                    items.add(item);
+                    inflateViewForItem(item);
+                    b.noItemTV.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onError(String error) {
+                    new MaterialAlertDialogBuilder(GalleryActivity.this)
+                            .setTitle("Error")
+                            .setMessage(error)
+                            .show();
+                }
+            });
         }
     }
 

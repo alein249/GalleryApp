@@ -17,11 +17,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/design_default_color_primary"
-            android:paddingBottom="16dp"
             android:paddingStart="24dp"
-            android:paddingEnd="24dp"
             android:paddingTop="16dp"
-            android:text="Add image"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp"
+            android:text="@string/add_image"
             android:textColor="#fff"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,12 +29,12 @@
 
         <TextView
             android:id="@+id/enterImageDimensions"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+            style="@style/DialogTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Enter image dimensions"
+            android:text="@string/enter_image_dimensions"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title" />
 
@@ -47,7 +47,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="Width"
+            android:hint="@string/width"
             app:layout_constraintEnd_toStartOf="@id/heightInput"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
-            android:hint="Height"
+            android:hint="@string/height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@id/widthInput"
@@ -100,17 +100,18 @@
             android:id="@+id/inputDimensionsRoot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="fetchImageBtn,heightInput,widthInput,enterImageDimensions" />
+            app:constraint_referenced_ids="fetchImageBtn,heightInput,widthInput,enterImageDimensions"
+            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/progressSubtitle"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+            style="@style/DialogTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Fetching random image..."
+            android:text="@string/fetching_random_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title" />
@@ -119,8 +120,8 @@
             android:id="@+id/linearProgressIndicator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
             android:layout_marginTop="16dp"
+            android:indeterminate="true"
             app:layout_constraintTop_toBottomOf="@id/progressSubtitle" />
 
         <androidx.constraintlayout.widget.Group
@@ -146,7 +147,7 @@
 
         <TextView
             android:id="@+id/choosePaletteTitle"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+            style="@style/DialogTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -173,7 +174,7 @@
 
         <TextView
             android:id="@+id/chooseLabelTitle"
-            style="@style/TextAppearance.MaterialComponents.Headline6"
+            style="@style/DialogTitleStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -202,7 +203,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
-            android:hint="Label"
+            android:hint="@string/label"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="parent"
@@ -226,13 +227,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/customLabelInput" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/shareImgBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/share_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/customLabelInput" />
+
         <androidx.constraintlayout.widget.Group
             android:id="@+id/mainRoot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:constraint_referenced_ids="imageView,colorChips,choosePaletteTitle,chooseLabelTitle,labelChips,customLabelInput,addBtn"
-            tools:visibility="gone" />
+            app:constraint_referenced_ids="imageView,colorChips,choosePaletteTitle,chooseLabelTitle,labelChips,customLabelInput,addBtn,shareImgBtn"
+            tools:visibility="visible" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

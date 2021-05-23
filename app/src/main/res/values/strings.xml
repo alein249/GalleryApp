@@ -4,5 +4,15 @@
     <string name="image_loaded">This is a random image</string>
     <string name="image_load_failed">Image load failed : $1%s</string>
     <string name="refresh">refresh</string>
+    <string name="choose_new_palette_color">Choose new palette color</string>
+    <string name="choose_new_label_title">Choose new label title</string>
+    <string name="label">Label</string>
+    <string name="add">ADD</string>
     <string name="no_items_try_adding_from_the_action_above">No items. Try adding from the action above</string>
+    <string name="add_image">Add Image</string>
+    <string name="enter_image_dimensions">Enter image dimensions</string>
+    <string name="width">Width</string>
+    <string name="height">Height</string>
+    <string name="fetching_random_image">Fetching random image...</string>
+    <string name="share_image">Share Image</string>
 </resources>
