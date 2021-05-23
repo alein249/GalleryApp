@@ -6,15 +6,12 @@ which fetch Random Images from url
 
 # Feature of the Appliaction.
 
-1).How to create Dialog..
-
-2).How to create Action Menu..
-
-3).Fetch colors from Random Image..
-
-4).Fetch labels from Random Image..
-
-5).Fetch images from cache memory..
+- Fetch and add image from internet to gallery
+- Fetch colors and labels according to image and make an image cardview according to it.
+- Fetch image from device storage and add to gallery
+- Save data in shared preferences
+- Share image using intent
+- Performs async task to get redirected url
 
 
 # Preview  Of the Application.
