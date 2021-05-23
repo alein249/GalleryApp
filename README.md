@@ -32,4 +32,4 @@ which fetch Random Images from url
 
 # Download APK from here
 
-[APK](https://github.com/alein249/GalleryApp/releases/download/galleryapp/app-debug.apk)
+[APK](https://github.com/alein249/GalleryApp/releases/download/new/app-release.apk)
