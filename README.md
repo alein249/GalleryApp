@@ -12,6 +12,10 @@ which fetch Random Images from url
 - Save data in shared preferences
 - Share image using intent
 - Performs async task to get redirected url
+- Drag and Drop function in recyclerview
+- Sort Alphabetically
+- Search function
+- Swipe function in recyclerview
 
 
 # Preview  Of the Application.
