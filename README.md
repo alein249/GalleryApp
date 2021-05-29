@@ -6,15 +6,12 @@ which fetch Random Images from url
 
 # Feature of the Appliaction.
 
-1).How to create Dialog..
-
-2).How to create Action Menu..
-
-3).Fetch colors from Random Image..
-
-4).Fetch labels from Random Image..
-
-5).Fetch images from cache memory..
+- Fetch and add image from internet to gallery
+- Fetch colors and labels according to image and make an image cardview according to it.
+- Fetch image from device storage and add to gallery
+- Save data in shared preferences
+- Share image using intent
+- Performs async task to get redirected url
 
 
 # Preview  Of the Application.
@@ -27,7 +24,12 @@ which fetch Random Images from url
 ![](https://github.com/alein249/GalleryApp/blob/master/app/src/main/res/drawable/gal6.jpg)
 ![](https://github.com/alein249/GalleryApp/blob/master/app/src/main/res/drawable/gal7.jpg)
 ![](https://github.com/alein249/GalleryApp/blob/master/app/src/main/res/drawable/gal8.jpg)
+![](https://github.com/alein249/GalleryApp/blob/master/app/src/main/res/drawable/gal9.jpg)
+![](https://github.com/alein249/GalleryApp/blob/master/app/src/main/res/drawable/gal10.jpg)
+![](https://github.com/alein249/GalleryApp/blob/master/app/src/main/res/drawable/gal11.jpg)
+![](https://github.com/alein249/GalleryApp/blob/master/app/src/main/res/drawable/gal12.jpg)
+![](https://github.com/alein249/GalleryApp/blob/master/app/src/main/res/drawable/gal13.jpg)
 
 # Download APK from here
 
-[APK](https://github.com/alein249/GalleryApp/releases/download/latest/app-release.apk)
+[APK](https://github.com/alein249/GalleryApp/releases/download/new/app-release.apk)
